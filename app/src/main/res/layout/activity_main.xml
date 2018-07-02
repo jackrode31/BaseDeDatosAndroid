@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="21dp"
-        android:layout_marginEnd="58dp"
+        android:layout_marginEnd="72dp"
         android:layout_marginTop="32dp"
         android:hint="Buscar"
         android:inputType=""
@@ -26,7 +26,7 @@
 
 
     <Button
-        android:id="@+id/btnsave"
+        android:id="@+id/btnadd"
         android:layout_width="217dp"
         android:layout_height="45dp"
         android:layout_marginBottom="125dp"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="9dp"
         android:text="Actualizar"
-        app:layout_constraintBottom_toTopOf="@+id/btnselectperticular"
+        app:layout_constraintBottom_toTopOf="@+id/btnsearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtemployeename" />
@@ -53,13 +53,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:text="Borrar"
-        app:layout_constraintBottom_toTopOf="@+id/btnsave"
+        app:layout_constraintBottom_toTopOf="@+id/btnadd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnselect" />
+        app:layout_constraintTop_toBottomOf="@+id/btnall" />
 
     <Button
-        android:id="@+id/btnselect"
+        android:id="@+id/btnall"
         android:layout_width="210dp"
         android:layout_height="46dp"
         android:layout_marginBottom="16dp"
@@ -67,15 +67,15 @@
         app:layout_constraintBottom_toTopOf="@+id/btndel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnselectperticular" />
+        app:layout_constraintTop_toBottomOf="@+id/btnsearch" />
 
     <Button
-        android:id="@+id/btnselectperticular"
+        android:id="@+id/btnsearch"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="Buscar"
-        app:layout_constraintBottom_toTopOf="@+id/btnselect"
+        app:layout_constraintBottom_toTopOf="@+id/btnall"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnupdate" />
