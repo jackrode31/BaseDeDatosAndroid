@@ -18,6 +18,10 @@ public class Books {
 
     }
 
+    public Books(){
+
+    }
+
     public long getisbn() {
         return isbn;
     }
