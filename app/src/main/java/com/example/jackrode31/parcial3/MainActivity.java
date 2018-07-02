@@ -16,16 +16,6 @@ Layout layoutt;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        layout = findViewById(R.id.layout);
-
-        layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddBook.class);
-                startActivity(intent);
-            }
-        });
-
 
     }
 }

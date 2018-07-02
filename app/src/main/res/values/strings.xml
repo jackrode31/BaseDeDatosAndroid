@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Parcial3</string>
+    <string-array name="Area">
+        <item>Matemáticas</item>
+        <item>Español</item>
+        <item>Historia</item>
+        <item>Inglés</item>
+    </string-array>
 </resources>
