@@ -11,6 +11,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     Button add, update, delete, search, list;
+    String scenario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,30 @@ public class MainActivity extends AppCompatActivity {
         delete = findViewById(R.id.btndel);
         search = findViewById(R.id.btnsearch);
         list = findViewById(R.id.btnall);
+
+
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, holy.class);
+                scenario = "ADD";
+                intent.putExtra("ESCENARIO", scenario);
+                startActivity(intent);
+            }
+        });
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, holy.class);
+                scenario = "UPDATE";
+                intent.putExtra("ESCENARIO", scenario);
+                startActivity(intent);
+            }
+        });
+
+
 
 
     }

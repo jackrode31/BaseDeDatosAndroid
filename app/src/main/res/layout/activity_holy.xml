@@ -4,16 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddUpdateBook"
+    tools:context=".holy"
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/titleholy"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Agregar Libro"
+        android:layout_marginTop="46dp"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -24,81 +22,71 @@
 
     <EditText
         android:id="@+id/autor"
-        android:layout_width="0dp"
+        android:layout_width="268dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginStart="58dp"
+        android:layout_marginBottom="45dp"
         android:ems="10"
-        android:hint="Autor"
+        android:hint="@string/autor"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/area"
+        app:layout_constraintEnd_toStartOf="@+id/titleholy"
+        app:layout_constraintStart_toStartOf="@+id/titleholy"
         app:layout_constraintTop_toBottomOf="@+id/titleholy" />
 
     <EditText
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="58dp"
         android:layout_marginStart="58dp"
         android:ems="10"
-        android:hint="Título del libro"
+        android:hint="@string/t_tulo_del_libro"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/area"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/autor" />
 
     <EditText
         android:id="@+id/editorial"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="23dp"
+        android:layout_height="31dp"
+        android:layout_marginBottom="45dp"
         android:layout_marginEnd="59dp"
         android:layout_marginStart="59dp"
+        android:layout_marginTop="45dp"
         android:ems="10"
-        android:hint="Editorial"
+        android:hint="@string/editorial"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/año"
+        app:layout_constraintBottom_toBottomOf="@+id/año"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/area" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <EditText
         android:id="@+id/año"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="45dp"
         android:layout_marginEnd="60dp"
         android:layout_marginStart="60dp"
         android:ems="10"
-        android:hint="Año"
+        android:hint="@string/a_o"
         android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/isbn"
+        app:layout_constraintBottom_toTopOf="@+id/addupdatebtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editorial" />
+        app:layout_constraintTop_toBottomOf="@+id/area" />
 
     <EditText
         android:id="@+id/isbn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="102dp"
         android:layout_marginEnd="63dp"
         android:layout_marginStart="63dp"
         android:ems="10"
-        android:hint="ISBN"
+        android:hint="@string/isbn"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/año" />
 
@@ -106,16 +94,26 @@
         android:id="@+id/area"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
-        android:layout_marginEnd="62dp"
-        android:layout_marginStart="62dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginStart="58dp"
         android:ems="10"
-        android:hint="Area"
+        android:hint="@string/area"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editorial"
+        app:layout_constraintBottom_toTopOf="@+id/año"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/autor" />
+
+    <Button
+        android:id="@+id/addupdatebtn"
+        android:layout_width="238dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="129dp"
+        android:text="@string/enviar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/año" />
 
 </android.support.constraint.ConstraintLayout>
