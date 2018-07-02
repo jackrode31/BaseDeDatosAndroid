@@ -1,118 +1,48 @@
 package com.example.jackrode31.parcial3;
-import android.content.ContentValues;
+
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+
+public class DBAdapter extends SQLiteOpenHelper {
 
 
-import java.util.ArrayList;
-import java.util.List;
+    private static final String DATABASE_NAME = "books.db";
+    private static final int DATABASE_VERSION = 1;
+
+    public static final String TABLE_BOOKS = "books";
+    public static final String COLUMN_ID = "isbn";
+    public static final String COLUMN_AUTOR = "autor";
+    public static final String COLUMN_TITLE = "title";
+    public static final String COLUMN_AÑO = "año";
+    public static final String COLUMN_EDITORIAL= "editorial";
+    public static final String COLUMN_AREA= "area";
+
+    private static final String TABLE_CREATE =
+            "CREATE TABLE " + TABLE_BOOKS + " (" +
+                    COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_AUTOR + " TEXT, " +
+                    COLUMN_TITLE + " TEXT, " +
+                    COLUMN_AÑO + " TEXT, " +
+                    COLUMN_EDITORIAL + " NUMERIC, " +
+                    COLUMN_AREA + " TEXT " +
+                    ")";
 
 
-public class DBAdapter {
-    public static final String LOGTAG = "EMP_MNGMNT_SYS";
-
-    SQLiteOpenHelper dbhandler;
-    SQLiteDatabase database;
-
-    private static final String[] allColumns = {
-            BooksHandler.COLUMN_ID,
-            BooksHandler.COLUMN_AUTOR,
-            BooksHandler.COLUMN_TITLE,
-            BooksHandler.COLUMN_AÑO,
-            BooksHandler.COLUMN_EDITORIAL,
-            BooksHandler.COLUMN_AREA
-
-    };
-
-    public DBAdapter(Context context){
-        dbhandler = new BooksHandler(context);
+    public DBAdapter(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public void open(){
-        Log.i(LOGTAG,"Database Opened");
-        database = dbhandler.getWritableDatabase();
-
-
-    }
-    public void close(){
-        Log.i(LOGTAG, "Database Closed");
-        dbhandler.close();
-
-    }
-    public Books addBook(Books Books){
-        ContentValues values  = new ContentValues();
-        values.put(BooksHandler.COLUMN_AUTOR,Books.getautor());
-        values.put(BooksHandler.COLUMN_TITLE,Books.gettitle());
-        values.put(BooksHandler.COLUMN_AÑO, Books.getaño());
-        values.put(BooksHandler.COLUMN_EDITORIAL, Books.geteditorial());
-        values.put(BooksHandler.COLUMN_AREA, Books.getarea());
-        long insertid = database.insert(BooksHandler.TABLE_BOOKS,null,values);
-        Books.setisbn(insertid);
-        return Books;
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(TABLE_CREATE);
 
     }
 
-    // Getting Book
-    public Books getBook(long id) {
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        Cursor cursor = database.query(BooksHandler.TABLE_BOOKS,allColumns,BooksHandler.COLUMN_ID + "=?",new String[]{String.valueOf(id)},null,null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        Books e = new Books(Long.parseLong(cursor.getString(0)),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5));
-        // return Book
-        return e;
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BOOKS);
+        db.execSQL(TABLE_CREATE);
     }
-
-    public List<Books> getAllBoxs() {
-
-        Cursor cursor = database.query(BooksHandler.TABLE_BOOKS,allColumns,null,null,null, null, null);
-
-        List<Books> books = new ArrayList<>();
-        if(cursor.getCount() > 0){
-            while(cursor.moveToNext()){
-                Books book = new Books();
-
-                book.setisbn(cursor.getLong(cursor.getColumnIndex(BooksHandler.COLUMN_ID)));
-                book.setautor(cursor.getString(cursor.getColumnIndex(BooksHandler.COLUMN_AUTOR)));
-                book.settitle(cursor.getString(cursor.getColumnIndex(BooksHandler.COLUMN_TITLE)));
-                book.setaño(cursor.getString(cursor.getColumnIndex(BooksHandler.COLUMN_AÑO)));
-                book.seteditorial(cursor.getString(cursor.getColumnIndex(BooksHandler.COLUMN_EDITORIAL)));
-                book.setarea(cursor.getString(cursor.getColumnIndex(BooksHandler.COLUMN_AREA)));
-                books.add(book);
-            }
-        }
-        // return All books
-        return books;
-    }
-
-
-
-
-    // Updating Book
-    public int updateBooks(Books book) {
-
-        ContentValues values = new ContentValues();
-        values.put(BooksHandler.COLUMN_AUTOR, book.getautor());
-        values.put(BooksHandler.COLUMN_TITLE, book.gettitle());
-        values.put(BooksHandler.COLUMN_AÑO, book.getaño());
-        values.put(BooksHandler.COLUMN_EDITORIAL, book.geteditorial());
-        values.put(BooksHandler.COLUMN_AREA, book.getarea());
-
-        // updating row
-        return database.update(BooksHandler.TABLE_BOOKS, values,
-                BooksHandler.COLUMN_ID + "=?",new String[] { String.valueOf(book.getisbn())});
-    }
-
-    // Deleting Book
-    public void removeBooks(Books book) {
-
-        database.delete(BooksHandler.TABLE_BOOKS, BooksHandler.COLUMN_ID + "=" + book.getisbn(), null);
-    }
-
-
-
 }
